@@ -1,0 +1,15 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: Rotisserie Roast
+aliases:
+- Rotisserie Roast by Boston Market
+operator: Boston Market
+disclosure_type: press_reported
+sources:
+- url: https://retailwire.com/discussion/what-will-applebees-and-boston-market-learn-from-their-virtual-restaurants/
+  publication: RetailWire
+  retrieved: '2026-08-05'
+  note: Rotisserie Roast, which includes "Crafted by Boston Market" in small lettering on the logo, is
+    being tested online in Miami and Philadelphia.
+nationwide: false

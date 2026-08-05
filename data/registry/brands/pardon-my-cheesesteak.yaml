@@ -1,0 +1,14 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: Pardon My Cheesesteak
+aliases: []
+operator: Virtual Dining Concepts
+disclosure_type: operator_public_statement
+sources:
+- url: https://joinvdc.com/brands/pardon-my-cheesesteak/
+  publication: Virtual Dining Concepts (joinvdc.com)
+  retrieved: '2026-08-05'
+  note: '"Pardon My Cheesesteak - Virtual Dining Concepts" (page title); "Created in partnership with
+    Barstool Sports'' hit podcast Pardon My Take"'
+nationwide: false

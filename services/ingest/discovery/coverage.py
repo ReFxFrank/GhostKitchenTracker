@@ -70,9 +70,13 @@ def load_registry_brands(registry_dir: Path | None = None) -> list[BrandEntry]:
     return entries
 
 
-def load_place_names(parquet_path: Path) -> pl.DataFrame:
-    df = pl.read_parquet(parquet_path, columns=["name_raw", "category"])
-    df = df.filter(pl.col("name_raw").is_not_null())
+def load_place_names(parquet_paths: Path | list[Path]) -> pl.DataFrame:
+    paths = [parquet_paths] if isinstance(parquet_paths, Path) else list(parquet_paths)
+    frames = []
+    for p in paths:
+        df = pl.read_parquet(p, columns=["name_raw", "category"])
+        frames.append(df.filter(pl.col("name_raw").is_not_null()))
+    df = pl.concat(frames, how="vertical")
     return df.with_columns(
         pl.col("name_raw")
         .map_elements(normalize_dba, return_dtype=pl.Utf8)
@@ -80,33 +84,56 @@ def load_place_names(parquet_path: Path) -> pl.DataFrame:
     ).filter(pl.col("name_normalized").is_not_null())
 
 
+def _strip_the(s: str) -> str:
+    return " ".join(t for t in s.split() if t != "the")
+
+
+# A subset hit tolerates at most this many extra tokens in the place name:
+# "nice day chinese" is a hit for brand "nice day"; "have a nice day cafe" is not.
+SUBSET_EXTRA_TOKENS_MAX = 2
+
+
 def match_brands(
     entries: list[BrandEntry],
     places: pl.DataFrame,
     threshold: float = FUZZY_THRESHOLD,
 ) -> list[BrandResult]:
+    """Presence semantics, deliberately directional: a brand is present when a
+    place name IS the brand, CONTAINS the brand's tokens (with a small extra-
+    token allowance), or is a near-typo of it. A place name that is merely a
+    token-subset of the brand ("Monster" for "Monster Mac") is NOT a hit —
+    token_set_ratio alone would score that 100, which is why it isn't used."""
     normalized = places["name_normalized"].to_list()
     raw = places["name_raw"].to_list()
     categories = places["category"].to_list()
+    stripped = [_strip_the(n) for n in normalized]
     norm_index: dict[str, int] = {}
-    for i, n in enumerate(normalized):
+    for i, n in enumerate(stripped):
         norm_index.setdefault(n, i)
 
     results: list[BrandResult] = []
     for entry in entries:
         matches: list[tuple[str, float, str]] = []
         for variant in entry.variants:
-            # Exact normalized match first — cheap and unambiguous.
-            if variant in norm_index:
-                i = norm_index[variant]
+            v = _strip_the(variant)
+            vtok = set(v.split())
+            # 1. Exact normalized match ("the"-insensitive) — unambiguous.
+            if v in norm_index:
+                i = norm_index[v]
                 matches.append((raw[i], 100.0, categories[i] or ""))
                 continue
+            # 2. Directional token containment: brand tokens ⊆ place tokens.
+            #    token_set_ratio == 100 iff one token set contains the other;
+            #    the direction filter and extra-token cap are applied after.
             for _, score, i in process.extract(
-                variant,
-                normalized,
-                scorer=fuzz.token_set_ratio,
-                score_cutoff=threshold,
-                limit=3,
+                v, stripped, scorer=fuzz.token_set_ratio, score_cutoff=100, limit=25
+            ):
+                ptok = set(stripped[i].split())
+                if vtok <= ptok and len(ptok - vtok) <= SUBSET_EXTRA_TOKENS_MAX:
+                    matches.append((raw[i], float(score), categories[i] or ""))
+            # 3. Near-typo variants (no subset freebie in token_sort_ratio).
+            for _, score, i in process.extract(
+                v, stripped, scorer=fuzz.token_sort_ratio, score_cutoff=threshold, limit=3
             ):
                 matches.append((raw[i], float(score), categories[i] or ""))
         # Dedupe by raw name, best score first.
@@ -132,10 +159,10 @@ def verdict(pct: float) -> str:
     )
 
 
-def run(parquet_path: Path, registry_dir: Path | None = None) -> dict:
+def run(parquet_paths: Path | list[Path], registry_dir: Path | None = None) -> dict:
     entries = load_registry_brands(registry_dir)
     unsourced = [e.slug for e in entries if not e.sourced]
-    places = load_place_names(parquet_path)
+    places = load_place_names(parquet_paths)
     results = match_brands(entries, places)
     hits = sum(1 for r in results if r.hit)
     pct = 100.0 * hits / len(results)

@@ -1,0 +1,21 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: The Meltdown
+aliases:
+- Meltdown
+operator: Denny's
+disclosure_type: operator_public_statement
+sources:
+- url: https://foodondemand.com/03102021/qa-with-dennys-virtual-brand-leader-dave-coltrin/
+  publication: Food On Demand
+  retrieved: '2026-08-05'
+  note: The Burger Den and The Meltdown are not stopgaps until dine-in returns to full strength.
+- url: https://www.restaurantdive.com/news/dennys-virtual-brands-appeal-gen-z-fuel-off-premise-sales/715112/
+  publication: Restaurant Dive
+  retrieved: '2026-08-05'
+  note: The company has offered two virtual brands, The Meltdown and The Burger Den, since 2021
+nationwide: true
+nyc_note: 'Verified via fetched Redux Pictures caption (archive.reduxpictures.com/id/16193229): the Jackson
+  Heights, Queens Denny''s kitchen ''prepares food not only for diners at the restaurant, but also for
+  delivery as Burger Den and The Meltdown'' (March 7, 2024).'

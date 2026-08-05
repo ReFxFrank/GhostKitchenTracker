@@ -1,0 +1,20 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: It's Just Wings
+aliases:
+- Just Wings
+operator: Brinker International (Chili's / Maggiano's)
+disclosure_type: operator_public_statement
+sources:
+- url: https://www.nrn.com/restaurant-finance/brinker-banks-on-virtual-brand-it-s-just-wings-growing-into-150-million-annual-business
+  publication: Nation's Restaurant News
+  retrieved: '2026-08-05'
+  note: Brinker International Inc. expects It's Just Wings, the virtual delivery brand introduced by the
+    Chili's Grill & Bar parent in the last week of June, can grow into a $150-million-a-year business
+- url: https://www.nrn.com/delivery-takeout-solutions/chili-s-parent-brinker-expands-virtual-it-s-just-wings-brand
+  publication: Nation's Restaurant News
+  retrieved: '2026-08-05'
+  note: Between our exclusive partnership with DoorDash, more than 1,000 company-owned kitchens across
+    the country and 45 years of operational expertise, we had the secret recipe to leverage our scale
+nationwide: true

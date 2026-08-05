@@ -1,0 +1,21 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: Tyga Bites
+aliases: []
+operator: Virtual Dining Concepts (Robert Earl)
+disclosure_type: operator_public_statement
+sources:
+- url: https://www.nrn.com/delivery-takeout-solutions/robert-earl-launches-tyga-bites-first-in-a-series-of-celebrity-fueled-virtual-restaurant-brands
+  publication: Nation's Restaurant News
+  retrieved: '2026-08-05'
+  note: Veteran restaurateur Robert Earl on Wednesday announced the launch of a virtual concept called
+    Tyga Bites, available in 30 markets across the country through Grubhub exclusively.
+- url: https://www.prweb.com/releases/tyga_and_robert_earl_launch_tyga_bites_a_virtual_dining_concept_now_available_across_the_u_s_in_30_major_markets/prweb17290199.htm
+  publication: PRWeb (operator press release)
+  retrieved: '2026-08-05'
+  note: '"Tyga, joins forces with renowned restaurateur Robert Earl and Earl''s son Robbie, for the launch
+    of TYGA BITES" ... "said Robert Earl, Founder of Virtual Dining Concepts."'
+nationwide: true
+nyc_note: Operator launch release states the July 2020 rollout covered 30 major U.S. markets, listing
+  New York among the first wave.

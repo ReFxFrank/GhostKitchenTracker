@@ -1,0 +1,26 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: Packed Bowls by Wiz Khalifa
+aliases: []
+operator: Nextbite
+disclosure_type: operator_public_statement
+sources:
+- url: https://www.globenewswire.com/news-release/2022/05/18/2446255/0/en/Wiz-Khalifa-and-Nextbite-Launch-Packed-Bowls-A-New-Delivery-Only-Menu-for-Tasty-Late-Night-Munchies.html
+  publication: GlobeNewswire (Nextbite press release)
+  retrieved: '2026-08-05'
+  note: 'Wiz Khalifa and Nextbite Launch Packed Bowls: A New Delivery-Only Menu for Tasty Late-Night Munchies'
+- url: https://digiday.com/marketing/get-it-off-the-ground-how-virtual-restaurant-company-nextbite-partnered-with-wiz-khalifa-to-lift-brand-awareness/
+  publication: Digiday
+  retrieved: '2026-08-05'
+  note: The partnership formed in May 2022, making Packed Bowls meals available for delivery via Uber
+    Eats, DoorDash and Grubhub in all 50 states via the alliance with Nextbite
+- url: https://www.globenewswire.com/news-release/2022/06/22/2467381/0/en/Wiz-Khalifa-and-Nextbite-Roll-Out-New-Delivery-Only-Menu-of-Tasty-Late-Night-Munchies-in-Cities-Nationwide.html
+  publication: GlobeNewswire (Nextbite press release)
+  retrieved: '2026-08-05'
+  note: available coast to coast, including in Atlanta, Las Vegas, Los Angeles, Miami, New York City,
+    Phoenix, Pittsburgh
+nationwide: true
+nyc_note: Nextbite's June 22, 2022 GlobeNewswire rollout release says Packed Bowls is 'available coast
+  to coast, including in... New York City' (verified by fetch; the May 2022 launch release does not name
+  NYC).

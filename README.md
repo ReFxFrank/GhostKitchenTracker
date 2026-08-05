@@ -48,7 +48,12 @@ Development proceeds in gated phases (see the build brief). Each phase ends with
 stop; the next phase does not begin in the same session.
 
 - [x] **Phase 0** — scaffold, legal posture, dataset ID verification
-- [ ] **Phase 1** — ingest + the coverage gate (the cheap kill test)
+- [~] **Phase 1** — ingest + the coverage gate. Done: fetchers (DOHMH/PLUTO/DCWP/
+  Overture) live-verified at full scale, normalizers + 40 tests, registry seeded
+  with 51 source-verified brands, preliminary coverage **47.1% (MARGINAL band)**
+  — see `docs/reports/2026-08-05-coverage-preliminary.md`. Remaining: registry
+  human review, `init-db`/`load` first run against Postgres, Geosupport install,
+  FSQ supplement (needs `HF_TOKEN` — distribution is gated) + re-measure.
 - [ ] **Phase 2** — venue classification + name-gap discovery
 - [ ] **Phase 3** — linkage engine
 - [ ] **Phase 4** — web app

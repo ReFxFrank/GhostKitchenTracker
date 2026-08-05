@@ -31,14 +31,19 @@ release **2026-07-22.0** (see `SOURCES.md`).
   (https://cdla.dev/permissive-2-0/), Apache 2.0
   (https://www.apache.org/licenses/LICENSE-2.0).
 
-## Foursquare OS Places (contingent)
+## Foursquare OS Places (activated 2026-08-05)
 
-Pulled **only if** the Phase 1 coverage gate lands in the 30–50% band and a
-supplement is needed. Licensed **Apache 2.0**. If ingested, records carry
+Activated as a coverage supplement after the preliminary Phase 1 gate landed
+in the 30–50% band. Licensed **Apache 2.0**. Ingested records carry
 `source_license = 'Apache-2.0'` and the attribution page adds:
 
 > Includes Foursquare OS Places data, © Foursquare Labs, Inc., available under
 > the Apache 2.0 license.
+
+Foursquare's NOTICE.txt (retrieved 2026-08-05 from the distribution bucket)
+asks that its content be preserved when the data is used; when FSQ data ships
+in production, the attribution page must reproduce that NOTICE content
+alongside the line above.
 
 ## OpenStreetMap — basemap only
 

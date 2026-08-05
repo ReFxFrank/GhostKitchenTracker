@@ -1,0 +1,22 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: Umami Burger
+aliases:
+- Umami Burger
+operator: C3 (Creating Culinary Communities)
+disclosure_type: operator_public_statement
+sources:
+- url: https://www.prnewswire.com/news-releases/c3---subsidiary-of-global-hospitality-company-sbe---expands-umami-burger-and-sams-crispy-chicken-in-new-york-301038765.html
+  publication: PR Newswire (C3 press release)
+  retrieved: '2026-08-05'
+  note: the expansion of its staple burger concept, Umami Burger, and delivery-only concept, Sam's Crispy
+    Chicken. Both will operate out of a ghost kitchen located at 120 W. 57th Street
+- url: https://www.prnewswire.com/news-releases/c3-the-fastest-growing-global-food-tech-platform-opens-citizens-new-york-the-new-culinary-epicenter-at-manhattan-west-301407684.html
+  publication: PR Newswire (C3 press release)
+  retrieved: '2026-08-05'
+  note: The center will house beloved brands such as Umami Burger, Sam's Crispy Chicken, Krispy Rice,
+    Cindy Lou's Cookies, EllaMia, Plant Nation, and Kumi
+nationwide: true
+nyc_note: Umami Burger operated at C3's Citizens food hall at Manhattan West, NYC, per C3's own press
+  release; C3 also ran a delivery-only Umami Burger ghost kitchen at 120 W. 57th Street in Manhattan.

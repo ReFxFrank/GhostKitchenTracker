@@ -89,6 +89,20 @@ def fetch_overture(
     _done(overture.fetch(limit=limit))
 
 
+@app.command()
+def fetch_fsq(
+    limit: Optional[int] = typer.Option(
+        None, help="Row cap for smoke tests (marks snapshot partial)"
+    ),
+) -> None:
+    """Pull the NYC bbox from Foursquare OS Places (coverage supplement).
+
+    Gated distribution — requires HF_TOKEN; see sources/fsq.py."""
+    from sources import fsq
+
+    _done(fsq.fetch(limit=limit))
+
+
 # ---------------------------------------------------------------------------
 # Phase 1 — normalize / load / coverage
 # ---------------------------------------------------------------------------
@@ -178,18 +192,30 @@ def coverage(
     from snapshots import Snapshot
     from sources import overture as ov
 
-    if places_parquet is None:
+    if places_parquet is not None:
+        paths = [places_parquet]
+    else:
+        from snapshots import SnapshotError
+
         snap = Snapshot.latest_complete("overture")
-        places_parquet = ov.parquet_path(snap)
+        paths = [ov.parquet_path(snap)]
         if snap.manifest().get("partial"):
             typer.secho(
                 "WARNING: coverage against a PARTIAL overture snapshot is meaningless "
                 "as a gate — smoke-test only",
                 fg=typer.colors.YELLOW,
             )
+        try:  # include the FSQ supplement automatically once it has been fetched
+            from sources import fsq as fsq_mod
 
-    report = cov.run(places_parquet)
-    typer.echo(f"places: {places_parquet}")
+            fsnap = Snapshot.latest_complete("fsq")
+            if not fsnap.manifest().get("partial"):
+                paths.append(fsq_mod.parquet_path(fsnap))
+        except SnapshotError:
+            pass
+
+    report = cov.run(paths)
+    typer.echo(f"places: {[str(p) for p in paths]}")
     if report["unsourced_brands"]:
         typer.secho(
             f"NOTE: {len(report['unsourced_brands'])} brand file(s) without sources "

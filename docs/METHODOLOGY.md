@@ -52,8 +52,18 @@ A virtual brand that exists *only* inside a delivery app — with no web
 presence of any kind — may not appear in any place dataset. We measure this
 ceiling directly (by checking what fraction of independently-documented virtual
 brands appear in our place data at all) and publish the result here.
-`TODO: coverage number lands after Phase 1 measurement.` This site indexes what
-can be seen; it does not claim completeness.
+
+**Preliminary measurement (2026-08-05, pending human review of the seed
+registry):** of 51 independently documented virtual brands, 24 (47%) had a
+matching record in the Overture places extract for NYC — with two of those
+hits looking like coincidental name collisions, so the honest range is
+43–47%. Several misses are brands that had already shut down by the
+measurement date, which place data (a snapshot of the present) legitimately
+no longer lists — so this number likely *understates* coverage of currently
+operating brands. Per the method's own rules this lands in the "supplement
+and re-measure" band; the re-measurement with a second place dataset
+(Foursquare OS Places) is pending. This site indexes what can be seen; it
+does not claim completeness.
 
 ## From candidate to displayed link: evidence families
 

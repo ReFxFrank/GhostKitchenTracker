@@ -1,0 +1,22 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: Guy Fieri's Flavortown Kitchen
+aliases:
+- Flavortown Kitchen
+operator: Virtual Dining Concepts
+disclosure_type: operator_public_statement
+sources:
+- url: https://foodondemand.com/03102021/vdcs-guy-fieri-flavortown-kitchen-hits-160-locations/
+  publication: Food On Demand
+  retrieved: '2026-08-05'
+  note: Guy Fieri's Flavortown Kitchen is the latest celebrity-backed virtual restaurant from Virtual
+    Dining Concepts (VDC).
+- url: https://www.timeout.com/newyork/news/guy-fieri-opened-a-delivery-only-restaurant-in-times-square-last-week-021721
+  publication: Time Out New York
+  retrieved: '2026-08-05'
+  note: Although clearly a Fieri endeavor, the delivery service is actually operated by Virtual Dining
+    Concepts, the company behind a slew of other celebrity-branded ghost kitchens.
+nationwide: true
+nyc_note: Time Out New York (Feb 2021) reported the delivery-only Flavortown Kitchen operating out of
+  1540 Broadway in Times Square.

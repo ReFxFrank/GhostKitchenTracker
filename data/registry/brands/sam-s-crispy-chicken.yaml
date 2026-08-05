@@ -1,0 +1,26 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: Sam's Crispy Chicken
+aliases: []
+operator: C3 (Creating Culinary Communities)
+disclosure_type: operator_public_statement
+sources:
+- url: https://www.prnewswire.com/news-releases/c3-the-fastest-growing-global-food-tech-platform-opens-citizens-new-york-the-new-culinary-epicenter-at-manhattan-west-301407684.html
+  publication: PR Newswire (C3 press release)
+  retrieved: '2026-08-05'
+  note: The center will house beloved brands such as Umami Burger, Sam's Crispy Chicken, Krispy Rice,
+    Cindy Lou's Cookies, EllaMia, Plant Nation, and Kumi
+- url: https://www.nrn.com/delivery-takeout-solutions/c3-is-opening-virtual-restaurants-in-partnership-with-sofia-vergara-youtubers-and-gamers
+  publication: Nation's Restaurant News
+  retrieved: '2026-08-05'
+  note: part of Nazarian's burgeoning portfolio of brands available via the Citizens Go virtual food hall
+    (which also includes Krispy Rice, Umami Burger and Sam's Crispy Chicken)
+- url: https://www.nrn.com/independent-restaurants/citizens-food-hall-officially-opens-public
+  publication: Nation's Restaurant News
+  retrieved: '2026-08-05'
+  note: Most of the brands are fast-casual, including Los Angeles-based brands Krispy Rice, Umami Burger,
+    Sam's Crispy Chicken, Cindy Lou's Cookies, EllaMia, Plant Nation and Kumi
+nationwide: true
+nyc_note: Featured at C3's Citizens food hall at Manhattan West, NYC, per C3's own verified press release
+  and verified NRN coverage of the opening.

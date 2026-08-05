@@ -1,0 +1,14 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: Pauly D's Italian Subs
+aliases: []
+operator: Virtual Dining Concepts
+disclosure_type: operator_public_statement
+sources:
+- url: https://www.businesswire.com/news/home/20201201006031/en/Virtual-Dining-Concepts-and-Grubhub-Announce-Two-Exclusive-New-Celebrity-Virtual-Brands-Marios-Tortas-Lopez-and-Pauly-Ds-Italian-Subs
+  publication: Business Wire (VDC/Grubhub press release)
+  retrieved: '2026-08-05'
+  note: 'Virtual Dining Concepts is launching two new celebrity-driven virtual restaurant brands: Mario''s
+    Tortas Lopez and Pauly D''s Italian Subs.'
+nationwide: true

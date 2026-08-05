@@ -1,0 +1,20 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: Grilled Cheese Society
+aliases: []
+operator: Nextbite
+disclosure_type: press_reported
+sources:
+- url: https://www.businesswire.com/news/home/20210223006050/en/Waitr-Partners-With-Nextbite-on-Its-Delivery-Only-Restaurant-Concept
+  publication: Business Wire (replacement for dead nextbite.io URL; same Feb 23, 2021 release, issued
+    by Waitr)
+  retrieved: '2026-08-05'
+  note: Virtual restaurant brands available via the Waitr and Bite Squad apps include Monster Mac, Wild
+    Wild Wings, CraveBurger, Grilled Cheese Society, Firebelly Wings, Hotbox by Wiz, Miss Mazy's
+- url: https://www.nrn.com/delivery-takeout-solutions/waitr-and-bite-squad-add-nextbite-delivery-only-virtual-brands
+  publication: Nation's Restaurant News
+  retrieved: '2026-08-05'
+  note: The 10 Nextbite brands available on its platforms now include CraveBurger, The Big Melt, Firebelly
+    Wings, Grilled Cheese Society, Hotbox by Wiz, Miss Mazy's, Monster Mac, Tossitup, Wild Wild Wings
+nationwide: true

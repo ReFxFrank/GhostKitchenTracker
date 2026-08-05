@@ -80,11 +80,26 @@ must fail loudly, not adapt silently._
   load-bearing. The ingest asserts required columns via live `DESCRIBE` before
   every extract and fails loudly on drift.
 
-### 5. Foursquare OS Places — contingent, not yet pinned
+### 5. Foursquare OS Places — **ACTIVATED 2026-08-05, pinned, access gated**
 
-- Apache 2.0, monthly Parquet releases on S3/Hugging Face. Pulled **only if**
-  the Phase 1 coverage gate lands in the 30–50% band. If activated, pin the
-  release here with the retrieval date, same rules as Overture.
+- Activated because the preliminary coverage gate landed in the 30–50%
+  MARGINAL band (see `docs/reports/2026-08-05-coverage-preliminary.md`).
+- **Pinned release: `dt=2026-07-09`** (latest on Hugging Face as of
+  2026-08-05; monthly cadence; 100 parquet files ≈ 11.8 GB total).
+- **Distribution is now gated (verified 2026-08-05):** the public S3 bucket
+  (`fsq-os-places-us-east-1`) serves only LICENSE.txt/NOTICE.txt — data keys
+  return 404 — and the Hugging Face dataset returns `401 GatedRepo`
+  anonymously. Access requires a **free** Hugging Face account that has
+  accepted the terms at https://huggingface.co/datasets/foursquare/fsq-os-places,
+  with its token in `HF_TOKEN`. Still zero dollars; one human account action.
+  `TODO(frank): accept the HF terms and set HF_TOKEN, then run
+  cli.py fetch-fsq and re-run cli.py coverage.`
+- License Apache 2.0, confirmed via the bucket's LICENSE/NOTICE on
+  2026-08-05. Attribution requires preserving the NOTICE.txt content — see
+  `ATTRIBUTION.md`.
+- Column list in `sources/fsq.py` is from FSQ documentation and is **not yet
+  live-verified** (gated); the module DESCRIBEs and asserts before its first
+  real extract and fails loudly on any drift.
 
 ### 6. NYC Geosupport Desktop Edition — not yet installed
 

@@ -1,0 +1,14 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: Super Mega Dilla
+aliases: []
+operator: IHOP (Dine Brands Global), in partnership with Nextbite
+disclosure_type: operator_public_statement
+sources:
+- url: https://www.globenewswire.com/news-release/2022/03/21/2406891/0/en/Nextbite-Partners-With-IHOP-to-Launch-Two-Virtual-Restaurants-in-Nine-States.html
+  publication: GlobeNewswire (Nextbite/IHOP press release)
+  retrieved: '2026-08-05'
+  note: Today, Nextbite, a leader in virtual restaurants, announced a partnership with the iconic IHOP
+    restaurant chain to roll out two delivery-only brands, Thrilled Cheese and Super Mega Dilla.
+nationwide: false

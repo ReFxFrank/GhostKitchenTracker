@@ -1,0 +1,19 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: Thighstop
+aliases: []
+operator: Wingstop
+disclosure_type: operator_public_statement
+sources:
+- url: https://ir.wingstop.com/its-time-to-have-it-all-wingstop-adds-thighs-to-its-menu/
+  publication: Wingstop Investor Relations (press release)
+  retrieved: '2026-08-05'
+  note: '"When launching Thighstop as a virtual brand, we knew our fans would be excited to try thighs,"
+    said Wingstop''s Chief Growth Officer Marisa Carona.'
+- url: https://www.prnewswire.com/news-releases/new-virtual-brand-thighstop-rescues-concerned-chicken-wing-connoisseurs-with-irresistible-menu-offerings-and-flavors-301315083.html
+  publication: PR Newswire (Wingstop press release)
+  retrieved: '2026-08-05'
+  note: 'Thighstop, the new thigh concept with more than 1,400 locations nationwide, is addressing consumer''s
+    fear of a chicken wing shortage head-on by hacking chicken wing brand Wingstop (NASDAQ: WING).'
+nationwide: true

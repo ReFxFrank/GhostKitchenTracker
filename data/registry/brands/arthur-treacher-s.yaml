@@ -1,0 +1,22 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: Arthur Treacher's
+aliases:
+- Arthur Treacher's Fish & Chips
+- Arthur Treachers
+operator: Nathan's Famous (revived as virtual brand via Franklin Junction host kitchens)
+disclosure_type: operator_public_statement
+sources:
+- url: https://www.nrn.com/delivery-takeout-solutions/franklin-junction-taps-arthur-treacher-s-as-host-kitchen-brand
+  publication: Nation's Restaurant News
+  retrieved: '2026-08-05'
+  note: The Franklin Junction digital Host Kitchen platform is partnering with Nathan's Famous and its
+    recently added Arthur Treacher's fish-and-chips concept to offer it as a virtual brand.
+- url: https://www.businesswire.com/news/home/20240102512770/en/Franklin-Junction-Awarded-Global-Exclusivity-for-Nathan%E2%80%99s-Famous-Virtual-Restaurants
+  publication: Business Wire (Franklin Junction / Nathan's Famous joint press release, with quote from
+    Nathan's VP of Marketing Phil McCann)
+  retrieved: '2026-08-05'
+  note: The deal also includes rights to Nathan's Famous sister brands, Arthur Treacher's Fish and Chips
+    and Wings of New York.
+nationwide: true

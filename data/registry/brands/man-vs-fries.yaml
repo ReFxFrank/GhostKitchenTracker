@@ -1,0 +1,21 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: Man Vs Fries
+aliases:
+- Man vs. Fries
+- Man versus Fries
+operator: Virtual Dining Concepts (acquisition reported March 2024 — NOT 2023 as originally claimed; founded
+  independently in 2018 by William Bonhorst; 'Bay Area' origin not verified)
+disclosure_type: operator_public_statement
+sources:
+- url: https://joinvdc.com/brands/
+  publication: Virtual Dining Concepts (operator's own brands page, heading 'Our brands')
+  retrieved: '2026-08-05'
+  note: Explore Man vs Fries
+- url: https://foodondemand.com/03222024/virtual-dining-concepts-acquires-man-vs-fries/
+  publication: Food On Demand (replacement for 403 Restaurant Business URL)
+  retrieved: '2026-08-05'
+  note: Virtual Dining Concepts (VDC) has acquired Man vs Fries, a delivery-first brand that serves up
+    creative French-fry based meals.
+nationwide: true

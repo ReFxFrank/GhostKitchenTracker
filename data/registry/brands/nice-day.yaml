@@ -1,0 +1,22 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: Nice Day
+aliases:
+- Nice Day Chinese
+- NICE DAY
+operator: Junzi Kitchen (Chinese-American delivery concept launched inside Junzi's own NYC kitchen)
+disclosure_type: operator_public_statement
+sources:
+- url: https://www.prnewswire.com/news-releases/junzi-launches-new-american-chinese-concept-nice-day-301116012.html
+  publication: PR Newswire (Junzi press release)
+  retrieved: '2026-08-05'
+  note: Nested within junzi kitchen's Greenwich Village location, NICE DAY will serve as a pop-up and
+    act as an updated model of traditional Chinese takeout restaurants
+- url: https://gothamist.com/food/classic-chinese-takeout-gets-contemporary-update-nice-day
+  publication: Gothamist
+  retrieved: '2026-08-05'
+  note: Nice Day Chinese is located at 170 Bleecker Street, at the corner of Sullivan Street.
+nationwide: false
+nyc_note: Launched 2020 out of Junzi Kitchen's Greenwich Village location at 170 Bleecker St; Gothamist
+  reported ~95% of orders were delivery, serving Manhattan below 45th St.

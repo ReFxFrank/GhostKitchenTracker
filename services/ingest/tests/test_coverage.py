@@ -59,6 +59,46 @@ def test_verdict_bands():
     assert cov.verdict(10).startswith("STOP")
 
 
+def _match_one(brand, aliases, place_names):
+    import polars as pl
+
+    entries = [cov.BrandEntry(slug="x", brand=brand, aliases=aliases)]
+    places = pl.DataFrame(
+        {
+            "name_raw": place_names,
+            "category": ["restaurant"] * len(place_names),
+            "name_normalized": [cov.normalize_dba(n) for n in place_names],
+        }
+    )
+    return cov.match_brands(entries, places)[0]
+
+
+def test_subset_wrong_direction_is_not_a_hit():
+    # A place called just "Monster" must NOT count as presence of "Monster Mac".
+    r = _match_one("Monster Mac", [], ["Monster", "Totally Unrelated"])
+    assert not r.hit
+
+
+def test_brand_contained_in_place_name_is_a_hit():
+    r = _match_one("Nice Day", [], ["Nice Day Chinese"])
+    assert r.hit
+
+
+def test_subset_extra_token_cap():
+    r = _match_one("Nice Day", [], ["Have A Nice Day Cafe Lounge"])
+    assert not r.hit
+
+
+def test_leading_the_is_insensitive():
+    r = _match_one("The Burger Den", [], ["Burger Den"])
+    assert r.hit
+
+
+def test_near_typo_hits_via_sort_ratio():
+    r = _match_one("MrBeast Burger", ["Mr Beast Burger"], ["Mr Beast Burger"])
+    assert r.hit
+
+
 def test_empty_registry_is_fatal(tmp_path, places_parquet):
     (tmp_path / "brands").mkdir()
     with pytest.raises(ValueError):

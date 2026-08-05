@@ -1,0 +1,19 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: The Burger Experience
+aliases: []
+operator: Smokey Bones
+disclosure_type: operator_public_statement
+sources:
+- url: https://www.prweb.com/releases/smokey-bones-opening-122-new-virtual-restaurants-featuring-wings-and-burgers-820719084.html
+  publication: PRWeb (Smokey Bones press release)
+  retrieved: '2026-08-05'
+  note: Smokey Bones launched its first virtual restaurants, The Wing Experience and The Burger Experience,
+    in 2019 in partnership with Uber Eats.
+- url: https://www.nrn.com/delivery-takeout-solutions/smokey-bones-ceo-on-building-a-brand-identity-for-a-virtual-concept
+  publication: Nation's Restaurant News
+  retrieved: '2026-08-05'
+  note: Now the chain has built a similar brand presence for The Burger Experience, which is also available
+    for delivery only out of the kitchens of 61 Smokey Bones restaurants across 16 states.
+nationwide: false

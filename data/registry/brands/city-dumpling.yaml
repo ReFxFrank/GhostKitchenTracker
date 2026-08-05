@@ -1,0 +1,18 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: City Dumpling
+aliases: []
+operator: Independent NYC virtual restaurant (food prepared in kitchens of multiple partner restaurants
+  around the city)
+disclosure_type: press_reported
+sources:
+- url: https://ny1.com/nyc/all-boroughs/human-interest/2021/01/13/ghost-kitchens-put-virtual-restaurants-on-the-map-during-the-pandemic
+  publication: Spectrum News NY1
+  retrieved: '2026-08-05'
+  note: City Dumpling has no brick-and-mortar location. Instead, its food is prepared in the kitchens
+    of a half-dozen restaurants around the city, including Moonrise Izakaya.
+nationwide: false
+nyc_note: Spectrum News NY1 (Jan 12, 2021) profiled City Dumpling as a NYC virtual restaurant on Grubhub
+  with no brick-and-mortar location, its food prepared in the kitchens of a half-dozen restaurants around
+  the city, including Moonrise Izakaya.

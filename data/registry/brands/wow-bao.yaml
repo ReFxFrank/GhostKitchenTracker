@@ -1,0 +1,22 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: Wow Bao
+aliases: []
+operator: 'Wow Bao; program licensed to 600+ host restaurant kitchens (operator site cites over 600 locations
+  and more than 700 delivery kitchens). Note: ''Lettuce Entertain You Enterprises'' attribution dropped
+  — no verified source names LEY as operator; Entrepreneur only ties CEO Geoff Alexander''s earlier career
+  to LEY.'
+disclosure_type: operator_public_statement
+sources:
+- url: https://www.wowbao.com/dark-kitchen/
+  publication: Wow Bao (operator site)
+  retrieved: '2026-08-05'
+  note: Since the beginning of 2020, Wow Bao has partnered with more than 300-350 local restaurants in
+    just 12 short months.
+- url: https://www.entrepreneur.com/business-news/geoff-alexander-of-wow-bao-on-branding-dark-kitchens/430459
+  publication: Entrepreneur (replacement for dead Restaurant Business URL, which returned HTTP 403)
+  retrieved: '2026-08-05'
+  note: The dark kitchen concept allows for Wow Bao menu items to be cooked and prepared in the unused
+    areas of already built restaurants and commercial kitchens
+nationwide: true

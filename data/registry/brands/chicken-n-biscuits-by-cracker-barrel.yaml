@@ -1,0 +1,19 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: Chicken n' Biscuits by Cracker Barrel
+aliases:
+- Chicken n' Biscuits
+operator: Cracker Barrel Old Country Store
+disclosure_type: operator_public_statement
+sources:
+- url: https://www.prnewswire.com/news-releases/chicken-n-biscuits-by-cracker-barrel-enters-the-chicken-sandwich-competition-with-new-homestyle-chicken-sandwich-301520233.html
+  publication: PR Newswire (Cracker Barrel press release)
+  retrieved: '2026-08-05'
+  note: Cracker Barrel Old Country Store® has announced its original virtual brand Chicken n' Biscuits,
+    known for serving up hearty portions of delicious chicken-forward meals and fresh biscuits.
+- url: https://www.fsrmagazine.com/content/cracker-barrels-virtual-brand-launches-homestyle-chicken-sandwich
+  publication: FSR Magazine
+  retrieved: '2026-08-05'
+  note: Cracker Barrel Old Country Store announced its original virtual brand Chicken n' Biscuits
+nationwide: true

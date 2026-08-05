@@ -1,0 +1,18 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: Pizzaoki
+aliases: []
+operator: Family Style Inc. (Lawrence Vavra), with DJ Steve Aoki; initially run out of CloudKitchens facilities
+disclosure_type: press_reported
+sources:
+- url: https://www.nrn.com/restaurant-executives/family-style-inc-s-lawrence-vavra-builds-a-new-ghost-kitchen-model-scaling-virtual-in-house-restaurant-brands-for-delivery-only
+  publication: Nation's Restaurant News
+  retrieved: '2026-08-05'
+  note: Pizzaoki, the delivery-only pizza concept Vavra started with partner celebrity DJ Steve Aoki
+- url: https://www.hngry.tv/articles/virtual-insanity-inside-travis-kalanicks-23-ghost-pizza-kitchens/
+  publication: HNGRY
+  retrieved: '2026-08-05'
+  note: The company, founded three years ago by EDM DJ Steve Aoki's manager, is just one of many subsidiaries
+    owned by CloudKitchens' parent, City Storage Systems LLC.
+nationwide: false

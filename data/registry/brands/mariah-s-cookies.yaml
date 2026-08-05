@@ -1,0 +1,18 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: Mariah's Cookies
+aliases: []
+operator: Virtual Dining Concepts
+disclosure_type: operator_public_statement
+sources:
+- url: https://www.foodnetwork.com/fn-dish/news/mariah-carey-holiday-cookies
+  publication: Food Network
+  retrieved: '2026-08-05'
+  note: Music's favorite diva has launched the virtual brand Mariah's Cookies in partnership with Virtual
+    Dining Concepts and restaurateur Robert Earl.
+- url: https://www.modernretail.co/retailers/influencers-are-infiltrating-ghost-kitchens-with-the-help-of-planet-hollywoods-founder/
+  publication: Modern Retail
+  retrieved: '2026-08-05'
+  note: Mariah and my company have partnered on a cookie brand. They're called Mariah Carey's cookies
+nationwide: true

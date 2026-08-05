@@ -1,0 +1,19 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: Buddy V's Cake Slice
+aliases: []
+operator: Virtual Dining Concepts
+disclosure_type: operator_public_statement
+sources:
+- url: https://www.nrn.com/delivery-takeout-solutions/buddy-valastro-whips-his-own-virtual-brand-buddy-vs-cake-slice-now-anyone
+  publication: Nation's Restaurant News
+  retrieved: '2026-08-05'
+  note: announced today that he is launching his own virtual brand, Buddy V's Cake Slice, in partnership
+    with Virtual Dining Concepts.
+- url: https://joinvdc.com/brands/buddy-vs-cake-slice/
+  publication: Virtual Dining Concepts (joinvdc.com)
+  retrieved: '2026-08-05'
+  note: Buddy V's Cake Slice brings the sweet success of Buddy Valastro—the Cake Boss himself—straight
+    to your doorstep. Powered by Virtual Dining Concepts
+nationwide: true

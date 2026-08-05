@@ -1,0 +1,24 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: HotBox by Wiz
+aliases:
+- Hotbox by Wiz Khalifa
+operator: Nextbite
+disclosure_type: operator_public_statement
+sources:
+- url: https://www.prweb.com/releases/nextbite_and_wiz_khalifa_announce_partnership_for_hotbox_by_wiz_delivery_only_restaurant_chain/prweb17338170.htm
+  publication: PRWeb (Nextbite/Wiz Khalifa press release)
+  retrieved: '2026-08-05'
+  note: Wiz Khalifa, in partnership with Nextbite, announces his latest business venture, HotBox by Wiz,
+    a delivery-only restaurant chain to be available nationwide starting October 1.
+- url: https://www.marketingdive.com/news/celebrities-bring-sizzle-to-new-virtual-restaurant-brands-from-nextbite/600002/
+  publication: Marketing Dive
+  retrieved: '2026-08-05'
+  note: HotBox By Wiz and George Lopez Tacos are partnerships with Nextbite, a startup founded in 2019
+- url: https://www.nrn.com/delivery-takeout-solutions/nextbite-teams-with-comedian-george-lopez-for-street-tacos-menu
+  publication: Nation's Restaurant News
+  retrieved: '2026-08-05'
+  note: The Denver-based Nextbite, owned by Ordermark, is expanding its celebrity-linked online concepts
+    beyond a partnership last year with rapper Wiz Khalifa for Hotbox by Wiz.
+nationwide: true

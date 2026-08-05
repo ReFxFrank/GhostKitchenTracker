@@ -1,0 +1,18 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: Wing Boss
+aliases: []
+operator: Dickey's Barbecue Pit (Dickey's Restaurant Brands)
+disclosure_type: operator_public_statement
+sources:
+- url: https://franchise.dickeys.com/blog/dickeys-new-virtual-brand-adds-a-new-revenue-stream-for-franchisees/
+  publication: Dickey's (company franchise blog)
+  retrieved: '2026-08-05'
+  note: Dickey's virtual brand – Wing Boss – is an ideal revenue opportunity
+- url: https://www.nrn.com/delivery-takeout-solutions/dickey-s-barbecue-pit-launches-virtual-smoked-chicken-concept-wing-boss
+  publication: Nation's Restaurant News
+  retrieved: '2026-08-05'
+  note: Wing Boss not only makes our pit-smoked wings and tenders more accessible, it's also an innovative
+    business model built to cater to today's times.
+nationwide: false

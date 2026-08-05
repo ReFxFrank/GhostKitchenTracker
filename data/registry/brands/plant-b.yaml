@@ -1,0 +1,19 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: Plant B
+aliases: []
+operator: Dog Haus / The Absolute Brands
+disclosure_type: operator_public_statement
+sources:
+- url: https://restaurantnewsrelease.com/founders-of-dog-haus-launch-the-absolute-brands-a-new-restaurant-group/85133159
+  publication: RestaurantNewsRelease.com (company press release; mirror replacing dead RestaurantNews.com
+    URL)
+  retrieved: '2026-08-05'
+  note: Plant B makes going beyond meat easy with great tasting, sustainable plant-based proteins, premium
+    toppings and delicious sides.
+- url: https://www.franchisetimes.com/franchise_news/dog-haus-rolls-out-3-virtual-brands-to-franchisees/article_8d7d420d-0fca-5409-8d15-0891685fb8d9.html
+  publication: Franchise Times
+  retrieved: '2026-08-05'
+  note: Plant B, a plant-based concept
+nationwide: true

@@ -1,0 +1,23 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: The Wing Dept
+aliases:
+- The Wing Dept.
+operator: Red Robin Gourmet Burgers
+disclosure_type: operator_public_statement
+sources:
+- url: https://ir.redrobin.com/news-events/press-releases/detail/8/red-robin-develops-three-new-delivery-only-brands-to-make
+  publication: Red Robin investor relations (company press release)
+  retrieved: '2026-08-05'
+  note: The Wing Dept focuses on a variety of wings and sides
+- url: https://www.nrn.com/restaurant-operations/red-robin-gourmet-burgers-rolls-out-three-virtual-restaurant-brands-nationwide
+  publication: Nation's Restaurant News
+  retrieved: '2026-08-05'
+  note: Red Robin Gourmet Burgers and Brews has launched three new non-burger virtual concepts and has
+    begun rolling them out nationwide, company officials said Tuesday.
+- url: https://www.restaurantdive.com/news/red-robin-stops-selling-mrbeast-burger-chicken-sammys-wing-dept-fresh-set/687537/
+  publication: Restaurant Dive
+  retrieved: '2026-08-05'
+  note: Chicken Sammy's, The Wing Dept. and Fresh Set are also being axed.
+nationwide: true

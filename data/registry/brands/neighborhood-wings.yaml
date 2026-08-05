@@ -1,0 +1,20 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: Neighborhood Wings
+aliases:
+- Neighborhood Wings by Applebee's
+operator: Applebee's (Dine Brands Global)
+disclosure_type: press_reported
+sources:
+- url: https://www.today.com/food/chuck-e-cheese-applebee-s-are-delivering-food-under-different-t181814
+  publication: Today.com
+  retrieved: '2026-08-05'
+  note: We launched Neighborhood Wings by Applebee's on GrubHub to make it even easier for guests to get
+    their wings fix
+- url: https://www.mashed.com/210725/the-shady-thing-applebees-is-doing-during-the-pandemic/
+  publication: Mashed
+  retrieved: '2026-08-05'
+  note: Applebee's is also getting into the GrubHub identity-switching game, quietly launching a spinoff
+    called Neighborhood Wings.
+nationwide: false

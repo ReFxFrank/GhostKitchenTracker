@@ -1,0 +1,19 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: Tender Shack
+aliases: []
+operator: Bloomin' Brands (Outback Steakhouse / Carrabba's / Fleming's)
+disclosure_type: operator_public_statement
+sources:
+- url: https://www.nrn.com/casual-dining/bloomin-brands-expands-tender-shack-virtual-brand-nationwide
+  publication: Nation's Restaurant News
+  retrieved: '2026-08-05'
+  note: '"Pursuing the virtual brand opportunity with a concept like Tender Shack provides incremental
+    sales with attractive margins and requires zero capital investment," said Deno'
+- url: https://www.restaurantdive.com/news/bloomin-brands-takes-virtual-brand-tender-shack-national/595318/
+  publication: Restaurant Dive
+  retrieved: '2026-08-05'
+  note: Bloomin' Brands has rolled out its virtual brand, Tender Shack, nationwide through a partnership
+    with DoorDash
+nationwide: true

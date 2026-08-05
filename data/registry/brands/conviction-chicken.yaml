@@ -1,0 +1,19 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: Conviction Chicken
+aliases:
+- TGI Fridays - Conviction Chicken
+operator: TGI Fridays
+disclosure_type: press_reported
+sources:
+- url: https://www.nrn.com/restaurant-technology/tgi-fridays-ceo-ray-blanchette-on-finding-success-with-a-virtual-sushi-brand
+  publication: Nation's Restaurant News
+  retrieved: '2026-08-05'
+  note: During the pandemic, TGI Fridays also launched its own virtual brand, Conviction Chicken, which
+    is still successful today.
+- url: https://www.ypulse.com/article/2021/03/04/what-you-need-to-know-about-virtual-restaurants/
+  publication: YPulse
+  retrieved: '2026-08-05'
+  note: Chili's also launched 'It's Just Wings' and TGI Fridays developed 'Conviction Chicken.'
+nationwide: false

@@ -1,0 +1,19 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: TikTok Kitchen
+aliases: []
+operator: Virtual Dining Concepts (in partnership with TikTok)
+disclosure_type: operator_public_statement
+sources:
+- url: https://techcrunch.com/2021/12/17/tiktok-is-launching-delivery-only-restaurants-across-the-u-s-in-march/amp
+  publication: TechCrunch
+  retrieved: '2026-08-05'
+  note: TikTok is partnering with Virtual Dining Concepts and Grubhub to launch 'TikTok Kitchen'-branded
+    delivery-only restaurants across the United States
+- url: https://techcrunch.com/2021/12/17/tiktok-is-launching-delivery-only-restaurants-across-the-u-s-in-march/amp
+  publication: TechCrunch (direct TikTok statement)
+  retrieved: '2026-08-05'
+  note: Proceeds from TikTok Kitchen sales will go to both support the creators who inspired the menu
+    item and to encourage and assist other creators
+nationwide: true

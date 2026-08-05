@@ -1,0 +1,19 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: Hootie's Burger Bar
+aliases:
+- Hooties Burger Bar
+operator: Hooters (HOA Brands / Hooters of America)
+disclosure_type: press_reported
+sources:
+- url: https://www.fsrmagazine.com/industry-news/hooters-creates-virtual-food-hall-partnership-olo/
+  publication: FSR magazine
+  retrieved: '2026-08-05'
+  note: plus Hootie's Burger Bar with a full line of cheeseburgers and hamburgers with all the toppings
+- url: https://www.restaurantdive.com/news/hooters-olo-house-3-virtual-brands-in-online-food-court/652464/
+  publication: Restaurant Dive
+  retrieved: '2026-08-05'
+  note: 'At launch, Hooters'' virtual food court includes three virtual concepts: Chase Elliott''s Chicken
+    Tenders, Hootie''s Burger Bar and Hootie''s Bait and Tackle.'
+nationwide: true

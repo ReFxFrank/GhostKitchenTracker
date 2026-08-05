@@ -1,0 +1,19 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: TenderFix
+aliases:
+- TenderFix by Noah Schnapp
+operator: Nextbite
+disclosure_type: operator_public_statement
+sources:
+- url: https://www.globenewswire.com/news-release/2023/03/16/2628884/0/en/Nextbite-Launches-Delivery-Only-Chicken-and-Plant-Based-TenderFix-Menu-in-Partnership-With-Actor-Noah-Schnapp.html
+  publication: GlobeNewswire (Nextbite press release)
+  retrieved: '2026-08-05'
+  note: Nextbite...today announced TenderFix™ by Noah Schnapp, featuring a range of chicken and plant-based
+    sandwiches, sliders and tenders.
+- url: https://www.restaurantdive.com/news/Nextbite-IHOP-Tenderfix-by-Noah-Schnapp-virtual-brand-launch/645110/
+  publication: Restaurant Dive
+  retrieved: '2026-08-05'
+  note: Nextbite, IHOP launch TenderFix virtual brand
+nationwide: true

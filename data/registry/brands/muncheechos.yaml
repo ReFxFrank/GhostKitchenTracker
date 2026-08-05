@@ -1,0 +1,21 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: Muncheechos
+aliases: []
+operator: Cheech Marin with chef Zach Neil (host-kitchen model)
+disclosure_type: operator_public_statement
+sources:
+- url: https://www.cheatsheet.com/news/cheech-marins-stoner-food-spins-the-ghost-kitchen-concept-into-host-kitchens-exclusive.html/
+  publication: Showbiz Cheat Sheet
+  retrieved: '2026-08-05'
+  note: Cannabis enthusiast Cheech Marin partnered with chef Zach Neil to cook up quintessential stoner
+    food designed to give local restaurants a hand up.
+- url: https://www.cheatsheet.com/news/cheech-marins-stoner-food-spins-the-ghost-kitchen-concept-into-host-kitchens-exclusive.html/
+  publication: Showbiz Cheat Sheet (operator first-person quote)
+  retrieved: '2026-08-05'
+  note: I took the word munchie and combined it with Cheech and made Muncheechos.
+nationwide: false
+nyc_note: 'Verified Cheat Sheet exclusive: ''The plan is to open the first host Muncheechos kitchens in
+  New York in February and expand until Muncheechos is available nationwide.'' The original claim that
+  Los Angeles would follow was NOT found on the fetched page and has been removed.'

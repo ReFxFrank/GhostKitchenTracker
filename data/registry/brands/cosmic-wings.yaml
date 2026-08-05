@@ -1,0 +1,20 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: Cosmic Wings
+aliases:
+- Cosmic Wings by Applebee's
+operator: Applebee's (Dine Brands Global)
+disclosure_type: operator_public_statement
+sources:
+- url: https://businesswire.com/news/home/20220411005189/en/Cosmic-Wings%C2%AE-Expands-Reach-with-DoorDash-and-Grubhub-to-Deliver-Out-of-this-World-Cheetos%C2%AE-Menu-of-Wings-Cheese-Bites-More-Nationwide
+  publication: Business Wire (Applebee's press release)
+  retrieved: '2026-08-05'
+  note: Cosmic Wings is an online-only restaurant available for delivery through DoorDash, Grubhub and
+    Uber Eats made in more than 1,575 Applebee's kitchens nationwide.
+- url: https://www.restaurantdive.com/news/applebees-adds-virtual-brand-cosmic-wings-menu/629275/
+  publication: Restaurant Dive
+  retrieved: '2026-08-05'
+  note: The company originally launched the brand through a partnership with Uber Eats in 2021, and has
+    since expanded it with DoorDash and Grubhub.
+nationwide: true

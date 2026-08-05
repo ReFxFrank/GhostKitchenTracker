@@ -1,0 +1,15 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: MrBeast Burger
+aliases:
+- Beast Burger
+operator: Virtual Dining Concepts
+disclosure_type: operator_public_statement
+sources:
+- url: https://joinvdc.com/brands/mrbeast-burger/
+  publication: Virtual Dining Concepts (joinvdc.com)
+  retrieved: '2026-08-05'
+  note: As a Virtual Dining Concepts partner, MrBeast Burger includes everything operators need to launch
+    and scale.
+nationwide: false

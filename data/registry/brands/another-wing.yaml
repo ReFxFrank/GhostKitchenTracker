@@ -1,0 +1,31 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: Another Wing
+aliases:
+- Another Wing by DJ Khaled
+operator: REEF (REEF Technology / REEF Kitchens)
+disclosure_type: operator_public_statement
+sources:
+- url: https://www.prnewswire.com/news-releases/dj-khaled-partners-with-reef-on-the-biggest-restaurant-launch-in-history-another-wing-301422451.html
+  publication: PR Newswire (REEF press release)
+  retrieved: '2026-08-05'
+  note: REEF, the world's largest operator of virtual restaurants, announced a collaboration with [...]
+    DJ Khaled on the biggest restaurant launch in history, Another Wing.
+- url: https://reeftechnology.com/dj-khaled-partners-with-reef-on-the-biggest-restaurant-launch-in-history-another-wing/
+  publication: REEF Technology (operator press release)
+  retrieved: '2026-08-05'
+  note: Another Wing is the result of DJ Khaled's legendary creativity colliding with REEF's best in class
+    kitchens platform
+- url: https://www.nrn.com/delivery-takeout-solutions/musician-dj-khaled-partners-with-reef-for-new-virtual-brand-another-wing
+  publication: Nation's Restaurant News
+  retrieved: '2026-08-05'
+  note: 'Musician DJ Khaled partners with REEF for new virtual brand: Another Wing'
+- url: https://hiphopwired.com/1061488/dj-khaled-another-wing-fried-chicken-wings/
+  publication: HipHopWired
+  retrieved: '2026-08-05'
+  note: In North America, New York, Atlanta, Houston, Miami, Los Angeles, residents can order their wings
+    from the company.
+nationwide: true
+nyc_note: HipHopWired launch coverage lists New York among the North American markets where Another Wing
+  was available at launch (Nov 2021).

@@ -1,0 +1,14 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: NASCAR Refuel
+aliases: []
+operator: Virtual Dining Concepts
+disclosure_type: press_reported
+sources:
+- url: https://foodondemand.com/09022021/speedy-nascar-refuel-launch-quickens-virtual-pace/
+  publication: Food On Demand
+  retrieved: '2026-08-05'
+  note: Virtual Dining Concepts provided the kitchen infrastructure as it did with MrBeast Burger and
+    Barstool Bites.
+nationwide: false

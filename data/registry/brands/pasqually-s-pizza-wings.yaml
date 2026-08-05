@@ -1,0 +1,15 @@
+# Seeded via source-verified research on 2026-08-05: every URL below was
+# fetched and checked to name the brand and support the operator attribution.
+# Pending Frank's Phase 1 review before the coverage gate is treated as final.
+brand: Pasqually's Pizza & Wings
+aliases:
+- Pasqually's
+operator: CEC Entertainment (Chuck E. Cheese)
+disclosure_type: operator_public_statement
+sources:
+- url: https://www.nrn.com/delivery-takeout-solutions/cec-expands-virtual-pasqually-s-brand-with-doordash-delivery
+  publication: Nation's Restaurant News
+  retrieved: '2026-08-05'
+  note: CEC Entertainment Inc., the parent of Chuck E. Cheese's and Peter Piper Pizza, this week is expanding
+    its virtual Pasqually's Pizza & Wings brand to DoorDash
+nationwide: true
