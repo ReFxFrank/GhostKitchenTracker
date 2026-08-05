@@ -1,0 +1,1226 @@
+{
+  "id": "80fac13b-1880-4335-8297-79639dd71b05",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.brand_links": {
+      "name": "brand_links",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "bigserial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "brand_id": {
+          "name": "brand_id",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "camis": {
+          "name": "camis",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "bin": {
+          "name": "bin",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "score": {
+          "name": "score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "family_count": {
+          "name": "family_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "has_documentary": {
+          "name": "has_documentary",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tier": {
+          "name": "tier",
+          "type": "link_tier",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "generated": {
+            "as": "(CASE\n        WHEN score >= 100 AND has_documentary THEN 'CONFIRMED'\n        WHEN score >= 60 AND family_count >= 2 THEN 'LIKELY'\n        WHEN score >= 35 THEN 'POSSIBLE'\n        ELSE 'SUPPRESSED'\n      END)::link_tier",
+            "type": "stored"
+          }
+        },
+        "computed_at": {
+          "name": "computed_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "superseded_by": {
+          "name": "superseded_by",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "brand_links_brand_idx": {
+          "name": "brand_links_brand_idx",
+          "columns": [
+            {
+              "expression": "brand_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "brand_links_bin_idx": {
+          "name": "brand_links_bin_idx",
+          "columns": [
+            {
+              "expression": "bin",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "brand_links_brand_id_virtual_brands_id_fk": {
+          "name": "brand_links_brand_id_virtual_brands_id_fk",
+          "tableFrom": "brand_links",
+          "tableTo": "virtual_brands",
+          "columnsFrom": [
+            "brand_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "brand_links_camis_establishments_camis_fk": {
+          "name": "brand_links_camis_establishments_camis_fk",
+          "tableFrom": "brand_links",
+          "tableTo": "establishments",
+          "columnsFrom": [
+            "camis"
+          ],
+          "columnsTo": [
+            "camis"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "brand_links_bin_buildings_bin_fk": {
+          "name": "brand_links_bin_buildings_bin_fk",
+          "tableFrom": "brand_links",
+          "tableTo": "buildings",
+          "columnsFrom": [
+            "bin"
+          ],
+          "columnsTo": [
+            "bin"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.buildings": {
+      "name": "buildings",
+      "schema": "",
+      "columns": {
+        "bin": {
+          "name": "bin",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "bbl": {
+          "name": "bbl",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "lat": {
+          "name": "lat",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "lng": {
+          "name": "lng",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "geom": {
+          "name": "geom",
+          "type": "geometry(point)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "boro": {
+          "name": "boro",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "canonical_address": {
+          "name": "canonical_address",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "bldg_class": {
+          "name": "bldg_class",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "bldg_class_group": {
+          "name": "bldg_class_group",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "bldg_area": {
+          "name": "bldg_area",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "num_floors": {
+          "name": "num_floors",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "owner_name": {
+          "name": "owner_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "year_built": {
+          "name": "year_built",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "venue_type": {
+          "name": "venue_type",
+          "type": "venue_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'UNKNOWN'"
+        },
+        "venue_score": {
+          "name": "venue_score",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "venue_classified_at": {
+          "name": "venue_classified_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.candidate_brands": {
+      "name": "candidate_brands",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "bigserial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "gers_id": {
+          "name": "gers_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name_normalized": {
+          "name": "name_normalized",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "bin": {
+          "name": "bin",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "discovered_at": {
+          "name": "discovered_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "dismissed": {
+          "name": "dismissed",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "dismissed_reason": {
+          "name": "dismissed_reason",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "candidate_brands_bin_idx": {
+          "name": "candidate_brands_bin_idx",
+          "columns": [
+            {
+              "expression": "bin",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "candidate_brands_gers_id_places_gers_id_fk": {
+          "name": "candidate_brands_gers_id_places_gers_id_fk",
+          "tableFrom": "candidate_brands",
+          "tableTo": "places",
+          "columnsFrom": [
+            "gers_id"
+          ],
+          "columnsTo": [
+            "gers_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "candidate_brands_bin_buildings_bin_fk": {
+          "name": "candidate_brands_bin_buildings_bin_fk",
+          "tableFrom": "candidate_brands",
+          "tableTo": "buildings",
+          "columnsFrom": [
+            "bin"
+          ],
+          "columnsTo": [
+            "bin"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.claims": {
+      "name": "claims",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "bigserial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "brand_id": {
+          "name": "brand_id",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "bin": {
+          "name": "bin",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "claimant_email": {
+          "name": "claimant_email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "verification_method": {
+          "name": "verification_method",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "verified_at": {
+          "name": "verified_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "assertion": {
+          "name": "assertion",
+          "type": "claim_assertion",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "corrected_bin": {
+          "name": "corrected_bin",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "operator_note": {
+          "name": "operator_note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "published": {
+          "name": "published",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "claims_brand_id_virtual_brands_id_fk": {
+          "name": "claims_brand_id_virtual_brands_id_fk",
+          "tableFrom": "claims",
+          "tableTo": "virtual_brands",
+          "columnsFrom": [
+            "brand_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "claims_bin_buildings_bin_fk": {
+          "name": "claims_bin_buildings_bin_fk",
+          "tableFrom": "claims",
+          "tableTo": "buildings",
+          "columnsFrom": [
+            "bin"
+          ],
+          "columnsTo": [
+            "bin"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.establishments": {
+      "name": "establishments",
+      "schema": "",
+      "columns": {
+        "camis": {
+          "name": "camis",
+          "type": "bigint",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "bin": {
+          "name": "bin",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "dba_raw": {
+          "name": "dba_raw",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "dba_normalized": {
+          "name": "dba_normalized",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "phone_normalized": {
+          "name": "phone_normalized",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cuisine": {
+          "name": "cuisine",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "first_seen": {
+          "name": "first_seen",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "last_seen": {
+          "name": "last_seen",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "establishments_bin_idx": {
+          "name": "establishments_bin_idx",
+          "columns": [
+            {
+              "expression": "bin",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "establishments_bin_buildings_bin_fk": {
+          "name": "establishments_bin_buildings_bin_fk",
+          "tableFrom": "establishments",
+          "tableTo": "buildings",
+          "columnsFrom": [
+            "bin"
+          ],
+          "columnsTo": [
+            "bin"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.evidence": {
+      "name": "evidence",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "bigserial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "brand_link_id": {
+          "name": "brand_link_id",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "family": {
+          "name": "family",
+          "type": "evidence_family",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "kind": {
+          "name": "kind",
+          "type": "evidence_kind",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "weight": {
+          "name": "weight",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "payload_json": {
+          "name": "payload_json",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "source_name": {
+          "name": "source_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "source_url": {
+          "name": "source_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "retrieved_at": {
+          "name": "retrieved_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "evidence_brand_link_idx": {
+          "name": "evidence_brand_link_idx",
+          "columns": [
+            {
+              "expression": "brand_link_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "evidence_brand_link_id_brand_links_id_fk": {
+          "name": "evidence_brand_link_id_brand_links_id_fk",
+          "tableFrom": "evidence",
+          "tableTo": "brand_links",
+          "columnsFrom": [
+            "brand_link_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.inspections": {
+      "name": "inspections",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "bigserial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "camis": {
+          "name": "camis",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "inspected_at": {
+          "name": "inspected_at",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "action": {
+          "name": "action",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "score": {
+          "name": "score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "grade": {
+          "name": "grade",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "graded_at": {
+          "name": "graded_at",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "type": {
+          "name": "type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "inspections_camis_idx": {
+          "name": "inspections_camis_idx",
+          "columns": [
+            {
+              "expression": "camis",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "inspections_camis_establishments_camis_fk": {
+          "name": "inspections_camis_establishments_camis_fk",
+          "tableFrom": "inspections",
+          "tableTo": "establishments",
+          "columnsFrom": [
+            "camis"
+          ],
+          "columnsTo": [
+            "camis"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.places": {
+      "name": "places",
+      "schema": "",
+      "columns": {
+        "gers_id": {
+          "name": "gers_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name_raw": {
+          "name": "name_raw",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name_normalized": {
+          "name": "name_normalized",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "category": {
+          "name": "category",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "confidence": {
+          "name": "confidence",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "operating_status": {
+          "name": "operating_status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "phone_normalized": {
+          "name": "phone_normalized",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "website": {
+          "name": "website",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "lat": {
+          "name": "lat",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "lng": {
+          "name": "lng",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "geom": {
+          "name": "geom",
+          "type": "geometry(point)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "bin": {
+          "name": "bin",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "source_license": {
+          "name": "source_license",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "source_release": {
+          "name": "source_release",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ingested_at": {
+          "name": "ingested_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "places_bin_idx": {
+          "name": "places_bin_idx",
+          "columns": [
+            {
+              "expression": "bin",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "places_bin_buildings_bin_fk": {
+          "name": "places_bin_buildings_bin_fk",
+          "tableFrom": "places",
+          "tableTo": "buildings",
+          "columnsFrom": [
+            "bin"
+          ],
+          "columnsTo": [
+            "bin"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.reports": {
+      "name": "reports",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "bigserial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "brand_id": {
+          "name": "brand_id",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "bin": {
+          "name": "bin",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "submitter_note": {
+          "name": "submitter_note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "submitted_at": {
+          "name": "submitted_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'pending'"
+        },
+        "reviewed_at": {
+          "name": "reviewed_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "reports_brand_id_virtual_brands_id_fk": {
+          "name": "reports_brand_id_virtual_brands_id_fk",
+          "tableFrom": "reports",
+          "tableTo": "virtual_brands",
+          "columnsFrom": [
+            "brand_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.takedowns": {
+      "name": "takedowns",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "bigserial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "subject_type": {
+          "name": "subject_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "subject_id": {
+          "name": "subject_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "claim": {
+          "name": "claim",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "received_at": {
+          "name": "received_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "resolved_at": {
+          "name": "resolved_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "outcome": {
+          "name": "outcome",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.violations": {
+      "name": "violations",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "bigserial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "inspection_id": {
+          "name": "inspection_id",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "code": {
+          "name": "code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description_verbatim": {
+          "name": "description_verbatim",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "critical_flag": {
+          "name": "critical_flag",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "violations_inspection_idx": {
+          "name": "violations_inspection_idx",
+          "columns": [
+            {
+              "expression": "inspection_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "violations_inspection_id_inspections_id_fk": {
+          "name": "violations_inspection_id_inspections_id_fk",
+          "tableFrom": "violations",
+          "tableTo": "inspections",
+          "columnsFrom": [
+            "inspection_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.virtual_brands": {
+      "name": "virtual_brands",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "bigserial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name_normalized": {
+          "name": "name_normalized",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "first_observed": {
+          "name": "first_observed",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "source_note": {
+          "name": "source_note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "promoted_from_candidate": {
+          "name": "promoted_from_candidate",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "virtual_brands_promoted_from_candidate_candidate_brands_id_fk": {
+          "name": "virtual_brands_promoted_from_candidate_candidate_brands_id_fk",
+          "tableFrom": "virtual_brands",
+          "tableTo": "candidate_brands",
+          "columnsFrom": [
+            "promoted_from_candidate"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {
+    "public.claim_assertion": {
+      "name": "claim_assertion",
+      "schema": "public",
+      "values": [
+        "confirms",
+        "denies",
+        "corrects"
+      ]
+    },
+    "public.evidence_family": {
+      "name": "evidence_family",
+      "schema": "public",
+      "values": [
+        "TESTIMONY",
+        "LOCATION",
+        "ENTITY",
+        "PHONE",
+        "MENU",
+        "MEDIA"
+      ]
+    },
+    "public.evidence_kind": {
+      "name": "evidence_kind",
+      "schema": "public",
+      "values": [
+        "OPERATOR_CLAIM_VERIFIED",
+        "OPERATOR_PUBLIC_STATEMENT",
+        "USER_REPORT",
+        "SHARED_BIN",
+        "EXACT_ADDRESS_MATCH",
+        "GEO_PROXIMITY",
+        "LEGAL_ENTITY_MATCH",
+        "PHONE_EXACT",
+        "FINGERPRINT_HIGH",
+        "FINGERPRINT_MED",
+        "IMAGE_PHASH_MATCH"
+      ]
+    },
+    "public.link_tier": {
+      "name": "link_tier",
+      "schema": "public",
+      "values": [
+        "CONFIRMED",
+        "LIKELY",
+        "POSSIBLE",
+        "SUPPRESSED"
+      ]
+    },
+    "public.venue_type": {
+      "name": "venue_type",
+      "schema": "public",
+      "values": [
+        "LIKELY_FACILITY",
+        "LIKELY_FOODCOURT",
+        "LIKELY_SINGLE_KITCHEN",
+        "INSTITUTIONAL",
+        "UNKNOWN"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

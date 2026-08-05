@@ -1,0 +1,36 @@
+# National chain blocklist for the venue classifier (§7, signal 4).
+# Several distinct entries from this list at one BIN ⇒ LIKELY_FOODCOURT.
+# Names are matched against dba_normalized (post-canonicalization), so no
+# punctuation or entity suffixes here. Seed list — extended during Phase 2
+# calibration against real classifier output.
+chains:
+  - auntie annes
+  - baskin robbins
+  - burger king
+  - cava
+  - chick fil a
+  - chipotle
+  - chopt
+  - cinnabon
+  - dominos
+  - dunkin
+  - five guys
+  - halal guys
+  - jamba
+  - just salad
+  - kfc
+  - le pain quotidien
+  - mcdonalds
+  - panda express
+  - panera bread
+  - papa johns
+  - popeyes
+  - pret a manger
+  - qdoba
+  - shake shack
+  - starbucks
+  - subway
+  - sweetgreen
+  - taco bell
+  - wendys
+  - white castle

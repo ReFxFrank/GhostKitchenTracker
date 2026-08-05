@@ -1,0 +1,10 @@
+# Never link or display. Takedowns and verified operator denials land here.
+# Checked at RENDER time, not only at scoring time — an entry takes effect on
+# the next deploy without a re-ingest. Do not remove entries without a
+# documented resolution; the git history of this file is the audit log.
+#
+# Entry format:
+# - bin: 1234567
+#   reason: "Owner dispute resolved YYYY-MM-DD; permit record ambiguous"
+#   added: "YYYY-MM-DD"
+exclusions: []

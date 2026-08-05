@@ -1,0 +1,46 @@
+name: seance
+
+services:
+  db:
+    image: postgis/postgis:16-3.5
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-seance}
+      POSTGRES_USER: ${POSTGRES_USER:-seance}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-seance-dev-only}
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-seance} -d ${POSTGRES_DB:-seance}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  web:
+    build: ../apps/web
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-postgres://seance:seance-dev-only@db:5432/seance}
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # Ingest runs per-stage, not as a daemon:
+  #   docker compose -f ops/docker-compose.yml --profile tools run --rm ingest python cli.py fetch-dohmh
+  ingest:
+    build: ../services/ingest
+    profiles: ["tools"]
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-postgres://seance:seance-dev-only@db:5432/seance}
+      SOCRATA_APP_TOKEN: ${SOCRATA_APP_TOKEN:-}
+      SEANCE_DATA_DIR: /data
+    volumes:
+      - ../data:/data
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  db-data:

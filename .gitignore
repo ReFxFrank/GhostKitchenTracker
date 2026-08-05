@@ -1,0 +1,31 @@
+# Node
+node_modules/
+.next/
+out/
+dist/
+*.tsbuildinfo
+npm-debug.log*
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.ruff_cache/
+.pytest_cache/
+
+# Data — raw snapshots and tiles are immutable local artifacts, never committed.
+# The registry (data/registry/) IS committed: its git history is the audit log.
+data/raw/*
+!data/raw/.gitkeep
+data/tiles/*
+!data/tiles/.gitkeep
+
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
