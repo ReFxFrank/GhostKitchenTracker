@@ -66,10 +66,19 @@ must fail loudly, not adapt silently._
 - **Access pattern:** DuckDB (`spatial` + `httpfs`), NYC bbox pushdown, no
   planet download — see brief §4 for the exact query. Output parquet lands in
   `data/raw/overture/{YYYY-MM-DD}/nyc_places.parquet`.
-- **Licensing:** CDLA Permissive 2.0 / Apache 2.0 per record; the per-record
-  source and license must be carried into `places.source_license`. The places
+- **Licensing:** per-record licenses live in the data itself — `sources` is a
+  list of structs each carrying a `license` field. Values observed in the wild
+  on 2026-08-05: `CDLA-Permissive-2.0`, `Apache-2.0`, and `CC0-1.0`. The
+  distinct set per record is carried into `places.source_license`. The places
   theme contains **no OpenStreetMap data**, so this join is clean under the
   ODbL firewall (see `ATTRIBUTION.md`).
+- **Live schema verification (2026-08-05, release 2026-07-22.0):** DuckDB
+  `DESCRIBE` against S3 confirmed all fields the brief relies on, including
+  `operating_status` (values observed: `open`, `permanently_closed`, null) and
+  `confidence`. The release also adds `basic_category` and a `taxonomy` struct
+  not mentioned in the brief — captured in the extract for future use, not yet
+  load-bearing. The ingest asserts required columns via live `DESCRIBE` before
+  every extract and fails loudly on drift.
 
 ### 5. Foursquare OS Places — contingent, not yet pinned
 

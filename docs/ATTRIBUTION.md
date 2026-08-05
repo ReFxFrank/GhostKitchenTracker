@@ -11,11 +11,14 @@ left to rot. Rendered as a public page from Phase 4 onward. Last revised:
 The `places` table is built from the Overture Maps **places** theme, pinned
 release **2026-07-22.0** (see `SOURCES.md`).
 
-- Records are licensed **CDLA Permissive 2.0** or **Apache 2.0** depending on
-  the per-record source. Both permit commercial use and durable storage; both
-  require attribution. Each ingested record stores its license in
-  `places.source_license`, so the public attribution page can state exactly
-  which licenses cover the data actually in use, with counts.
+- Records are licensed **CDLA Permissive 2.0**, **Apache 2.0**, or (for a
+  small set of source records) **CC0 1.0**, per the per-record source — the
+  license travels inside the data itself (`sources[].license`, verified live
+  2026-08-05). All three permit commercial use and durable storage; CDLA-P and
+  Apache require attribution, CC0 does not but is recorded anyway. Each
+  ingested record stores its license set in `places.source_license`, so the
+  public attribution page can state exactly which licenses cover the data
+  actually in use, with counts.
 - Required notice, displayed on the attribution page and in the site footer's
   attribution link:
 

@@ -21,6 +21,7 @@ data/raw/*
 !data/raw/.gitkeep
 data/tiles/*
 !data/tiles/.gitkeep
+data/staging/
 
 # Environment / secrets
 .env
