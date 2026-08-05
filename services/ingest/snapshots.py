@@ -46,6 +46,9 @@ class Snapshot:
     def is_complete(self) -> bool:
         return self.manifest_path.exists()
 
+    def is_partial(self) -> bool:
+        return self.is_complete() and bool(self.manifest().get("partial"))
+
     def manifest(self) -> dict[str, Any]:
         return json.loads(self.manifest_path.read_text())
 
@@ -146,12 +149,19 @@ class Snapshot:
         return pl.concat(frames, how="diagonal")
 
     @classmethod
-    def latest_complete(cls, source: str, root: Path | None = None) -> "Snapshot":
+    def latest_complete(
+        cls, source: str, root: Path | None = None, include_partial: bool = False
+    ) -> "Snapshot":
+        """Latest complete snapshot. PARTIAL snapshots (smoke tests) are skipped
+        unless explicitly requested — a smoke test must never silently become
+        the default input to normalize/load."""
         base = (root or config.RAW_DIR) / source
         if not base.exists():
             raise SnapshotError(f"no snapshots exist for source '{source}' under {base}")
         for date_dir in sorted(base.iterdir(), reverse=True):
             snap = cls(source, date_dir.name, root=root)
-            if snap.is_complete():
+            if snap.is_complete() and (include_partial or not snap.is_partial()):
                 return snap
-        raise SnapshotError(f"no COMPLETE snapshot for source '{source}' under {base}")
+        raise SnapshotError(
+            f"no COMPLETE non-partial snapshot for source '{source}' under {base}"
+        )

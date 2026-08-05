@@ -47,3 +47,26 @@ def test_latest_complete_skips_unfinished(tmp_path):
 def test_latest_complete_errors_when_nothing_exists(tmp_path):
     with pytest.raises(SnapshotError):
         Snapshot.latest_complete("nope", root=tmp_path)
+
+
+def test_latest_complete_skips_partial_smoke_tests(tmp_path):
+    real = Snapshot("testsrc", "2026-08-01", root=tmp_path)
+    real.write_page(0, [{"a": "1"}])
+    real.finalize({"rows": 1, "partial": False})
+    smoke = Snapshot("testsrc", "2026-08-05", root=tmp_path)
+    smoke.write_page(0, [{"a": "2"}])
+    smoke.finalize({"rows": 1, "partial": True})
+
+    assert Snapshot.latest_complete("testsrc", root=tmp_path).date == "2026-08-01"
+    assert (
+        Snapshot.latest_complete("testsrc", root=tmp_path, include_partial=True).date
+        == "2026-08-05"
+    )
+
+
+def test_only_partial_snapshots_is_an_error(tmp_path):
+    smoke = Snapshot("testsrc", "2026-08-05", root=tmp_path)
+    smoke.write_page(0, [{"a": "1"}])
+    smoke.finalize({"rows": 1, "partial": True})
+    with pytest.raises(SnapshotError):
+        Snapshot.latest_complete("testsrc", root=tmp_path)

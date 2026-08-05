@@ -93,6 +93,12 @@ def fetch(
 ) -> Snapshot:
     snap = snapshot or Snapshot(SOURCE)
     if snap.is_complete():
+        if snap.is_partial():
+            raise SnapshotError(
+                f"a PARTIAL smoke-test snapshot occupies {snap.dir}; delete that "
+                "directory (partial snapshots are disposable, not part of the "
+                "durable record) or point SEANCE_DATA_DIR elsewhere"
+            )
         raise SnapshotError(f"snapshot {snap.dir} already complete")
     snap.write_file_placeholder()
     out = snap.dir / PARQUET_NAME

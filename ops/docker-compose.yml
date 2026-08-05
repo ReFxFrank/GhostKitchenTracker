@@ -35,9 +35,13 @@ services:
     environment:
       DATABASE_URL: ${DATABASE_URL:-postgres://seance:seance-dev-only@db:5432/seance}
       SOCRATA_APP_TOKEN: ${SOCRATA_APP_TOKEN:-}
+      HF_TOKEN: ${HF_TOKEN:-}
       SEANCE_DATA_DIR: /data
+      SEANCE_REGISTRY_DIR: /data/registry
+      SEANCE_SCHEMA_DIR: /schema
     volumes:
       - ../data:/data
+      - ../packages/schema:/schema:ro
     depends_on:
       db:
         condition: service_healthy

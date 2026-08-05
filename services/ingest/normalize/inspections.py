@@ -17,12 +17,15 @@ from __future__ import annotations
 
 import polars as pl
 
+import config
 from normalize.names import normalize_dba
 from normalize.phones import normalize_phone
 
 SENTINEL_DATE = "1900-01-01"
 
 INSPECTION_KEY = ["camis", "inspection_date", "inspection_type"]
+
+_PLACEHOLDER_BIN_STRS = {str(b) for b in config.PLACEHOLDER_BINS}
 
 
 def _date_col(name: str) -> pl.Expr:
@@ -41,8 +44,19 @@ def prepare(df: pl.DataFrame) -> pl.DataFrame:
 
 
 def establishments_frame(df: pl.DataFrame) -> pl.DataFrame:
-    """One row per CAMIS, latest-record-date values winning."""
+    """One row per CAMIS, latest-record-date values winning.
+
+    Placeholder "million BINs" (1000000, 2000000, … — boro-code placeholders
+    meaning "no specific building") are nulled: treating them as real BINs
+    would collapse unrelated establishments into fake mega-buildings and
+    poison the SHARED_BIN evidence family."""
     real = pl.col("inspection_date") != SENTINEL_DATE
+    df = df.with_columns(
+        pl.when(pl.col("bin").is_in(list(_PLACEHOLDER_BIN_STRS)))
+        .then(pl.lit(None, dtype=pl.Utf8))
+        .otherwise(pl.col("bin"))
+        .alias("bin")
+    )
     out = (
         df.sort("record_date")
         .group_by("camis")

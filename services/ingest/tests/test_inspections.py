@@ -105,6 +105,20 @@ def test_two_inspections_same_camis_stay_separate():
     assert len(frames["inspections"]) == 2
 
 
+def test_placeholder_million_bins_are_nulled():
+    # Boro-code placeholder BINs mean "no specific building" — treating them as
+    # real would collapse unrelated establishments into fake mega-buildings.
+    df = pl.DataFrame(
+        [
+            _row(camis="50000010", bin="1000000"),
+            _row(camis="50000011", bin="4000000"),
+            _row(camis="50000012", bin="4085660"),
+        ]
+    )
+    est = normalize_snapshot(df)["establishments"].sort("camis")
+    assert est["bin"].to_list() == [None, None, "4085660"]
+
+
 def test_pluto_bbl_decimal_string_parses_to_int():
     df = pl.DataFrame(
         [

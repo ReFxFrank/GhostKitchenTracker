@@ -1,20 +1,41 @@
-"""Central configuration. NYC-specific by design — do not parameterize the jurisdiction."""
+"""Central configuration. NYC-specific by design — do not parameterize the jurisdiction.
+
+Path resolution works in two layouts:
+- Repo checkout: services/ingest/config.py two levels under the repo root.
+- Docker image: this file sits at /app with no repo around it; every path the
+  container needs comes from env (SEANCE_DATA_DIR, SEANCE_REGISTRY_DIR,
+  SEANCE_SCHEMA_DIR — see ops/docker-compose.yml).
+"""
 
 from __future__ import annotations
 
 import os
 from pathlib import Path
 
-# Repo layout: services/ingest/config.py → repo root is two levels up.
-_REPO_ROOT = Path(__file__).resolve().parents[2]
 
-DATA_DIR = Path(os.environ.get("SEANCE_DATA_DIR", _REPO_ROOT / "data"))
+def _find_repo_root() -> Path | None:
+    for ancestor in Path(__file__).resolve().parents:
+        if (ancestor / "packages" / "schema").is_dir() or (ancestor / ".git").exists():
+            return ancestor
+    return None
+
+
+_REPO_ROOT = _find_repo_root()
+
+DATA_DIR = Path(
+    os.environ.get("SEANCE_DATA_DIR")
+    or (_REPO_ROOT / "data" if _REPO_ROOT else Path("/data"))
+)
 RAW_DIR = DATA_DIR / "raw"
 STAGING_DIR = DATA_DIR / "staging"  # derived parquet, gitignored; raw/ stays immutable
 
-# The registry is version-controlled truth (git history = audit log). It stays
-# in the repo even when SEANCE_DATA_DIR points raw/staging somewhere else.
-REGISTRY_DIR = Path(os.environ.get("SEANCE_REGISTRY_DIR", _REPO_ROOT / "data" / "registry"))
+# The registry is version-controlled truth (git history = audit log). In a repo
+# checkout it stays in the repo even when SEANCE_DATA_DIR points raw/staging
+# elsewhere; in the container it arrives via the ../data mount.
+REGISTRY_DIR = Path(
+    os.environ.get("SEANCE_REGISTRY_DIR")
+    or (_REPO_ROOT / "data" / "registry" if _REPO_ROOT else DATA_DIR / "registry")
+)
 
 SOCRATA_BASE = "https://data.cityofnewyork.us"
 SOCRATA_APP_TOKEN = os.environ.get("SOCRATA_APP_TOKEN") or None
@@ -39,10 +60,21 @@ FSQ_RELEASE = "2026-07-09"
 # Five boroughs bounding box (brief §4).
 NYC_BBOX = {"xmin": -74.26, "xmax": -73.68, "ymin": 40.48, "ymax": 40.92}
 
+# DOHMH/DOB placeholder "million BINs": boro-code * 1,000,000 means "no
+# specific building identified". Treating these as real BINs would collapse
+# thousands of unrelated establishments into five fake mega-buildings and
+# poison the SHARED_BIN evidence family. Always null them at normalize time.
+PLACEHOLDER_BINS = {1000000, 2000000, 3000000, 4000000, 5000000}
+
 DATABASE_URL = os.environ.get(
     "DATABASE_URL", "postgres://seance:seance-dev-only@localhost:5432/seance"
 )
 
-# Drizzle migration + invariants, applied by `cli.py init-db`.
-SCHEMA_SQL = _REPO_ROOT / "packages" / "schema" / "drizzle" / "0000_init.sql"
-INVARIANTS_SQL = _REPO_ROOT / "packages" / "schema" / "sql" / "invariants.sql"
+# Drizzle migration + invariants, applied by `cli.py init-db`. In the container
+# these come from the SEANCE_SCHEMA_DIR mount (see ops/docker-compose.yml).
+_SCHEMA_DIR = Path(
+    os.environ.get("SEANCE_SCHEMA_DIR")
+    or (_REPO_ROOT / "packages" / "schema" if _REPO_ROOT else Path("/schema"))
+)
+SCHEMA_SQL = _SCHEMA_DIR / "drizzle" / "0000_init.sql"
+INVARIANTS_SQL = _SCHEMA_DIR / "sql" / "invariants.sql"

@@ -35,11 +35,37 @@ PARQUET_NAME = "nyc_places.parquet"
 REQUIRED_COLUMNS = {
     "id", "names", "categories", "confidence", "operating_status", "phones",
     "websites", "socials", "addresses", "brand", "sources", "bbox",
+    "basic_category",
+}
+
+# The extract SQL reaches into struct subfields; a release that drops or
+# renames one would otherwise fail (or silently null) mid-COPY. DESCRIBE
+# exposes struct shapes in the type string, so drift is caught up front.
+STRUCT_SUBFIELDS = {
+    "names": ["primary"],
+    "categories": ["primary"],
+    "addresses": ["freeform", "postcode", "locality"],
+    "brand": ["names"],
+    "sources": ["license"],
+    "bbox": ["xmin", "xmax", "ymin", "ymax"],
 }
 
 
 class OvertureSchemaError(RuntimeError):
     pass
+
+
+def validate_schema(actual: dict[str, str]) -> list[str]:
+    """Pure check: returns a list of problems (empty = schema is usable)."""
+    problems = [f"missing column: {c}" for c in sorted(REQUIRED_COLUMNS - set(actual))]
+    for col, subfields in STRUCT_SUBFIELDS.items():
+        typ = actual.get(col)
+        if typ is None:
+            continue  # already reported as missing
+        for sub in subfields:
+            if sub.lower() not in typ.lower():
+                problems.append(f"column {col}: subfield '{sub}' not in type {typ[:80]}")
+    return problems
 
 
 @contextlib.contextmanager
@@ -72,11 +98,12 @@ def assert_schema(con: duckdb.DuckDBPyConnection) -> dict[str, str]:
         f"DESCRIBE SELECT * FROM read_parquet('{config.OVERTURE_S3}', hive_partitioning=1) LIMIT 0"
     ).fetchall()
     actual = {name: typ for name, typ, *_ in rows}
-    missing = sorted(REQUIRED_COLUMNS - set(actual))
-    if missing:
+    problems = validate_schema(actual)
+    if problems:
         raise OvertureSchemaError(
-            f"Overture release {config.OVERTURE_RELEASE}: required columns missing "
-            f"from live schema: {missing}. Refusing to extract."
+            f"Overture release {config.OVERTURE_RELEASE}: live schema drifted — "
+            + "; ".join(problems)
+            + ". Refusing to extract."
         )
     return actual
 
@@ -88,6 +115,12 @@ def fetch(
 ) -> Snapshot:
     snap = snapshot or Snapshot(SOURCE)
     if snap.is_complete():
+        if snap.is_partial():
+            raise SnapshotError(
+                f"a PARTIAL smoke-test snapshot occupies {snap.dir}; delete that "
+                "directory (partial snapshots are disposable, not part of the "
+                "durable record) or point SEANCE_DATA_DIR elsewhere"
+            )
         raise SnapshotError(f"snapshot {snap.dir} already complete")
     snap.write_file_placeholder()
     out = snap.dir / PARQUET_NAME
