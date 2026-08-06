@@ -1,10 +1,10 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import type { Listing } from "../types";
 import { BRANDS } from "../data/dataset";
 import { matchBrands } from "../lib/match";
-import { normalizeAddress } from "../lib/normalize";
+import { normalizeAddress, normalizeName } from "../lib/normalize";
 import { collisionAddresses } from "../lib/collisions";
-import { newListingId } from "../lib/storage";
+import { isListing, newListingId } from "../lib/storage";
 
 const PLATFORMS = ["DoorDash", "UberEats", "Grubhub", "Postmates", "Other"];
 
@@ -17,6 +17,48 @@ export function Listings({ listings, setListings }: Props) {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [platform, setPlatform] = useState(PLATFORMS[0]);
+  const [importNote, setImportNote] = useState("");
+  const fileInput = useRef<HTMLInputElement>(null);
+
+  const exportListings = () => {
+    const blob = new Blob([JSON.stringify(listings, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "gkt-listings.json";
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const importListings = async (file: File) => {
+    try {
+      const parsed = JSON.parse(await file.text());
+      if (!Array.isArray(parsed)) {
+        setImportNote("Import failed: file is not a listings export.");
+        return;
+      }
+      const incoming = parsed.filter(isListing);
+      const key = (l: Listing) => `${normalizeName(l.name)}|${normalizeAddress(l.address)}`;
+      const seen = new Set(listings.map(key));
+      const fresh = incoming.filter((l) => {
+        const k = key(l);
+        if (seen.has(k)) return false;
+        seen.add(k);
+        return true;
+      });
+      const added = fresh.length;
+      if (added > 0) setListings((prev) => [...fresh, ...prev]);
+      const dups = incoming.length - added;
+      const invalid = parsed.length - incoming.length;
+      setImportNote(
+        `Imported ${added} listing${added === 1 ? "" : "s"}` +
+          (dups > 0 ? ` (${dups} duplicate${dups === 1 ? "" : "s"} skipped)` : "") +
+          (invalid > 0 ? ` — ${invalid} invalid entr${invalid === 1 ? "y" : "ies"} ignored` : ""),
+      );
+    } catch {
+      setImportNote("Import failed: not valid JSON.");
+    }
+  };
 
   const collisions = useMemo(() => collisionAddresses(listings), [listings]);
 
@@ -47,12 +89,45 @@ export function Listings({ listings, setListings }: Props) {
             address, you've found a ghost kitchen — the app flags it automatically.
           </div>
         </div>
-        {collisions.size > 0 && (
-          <span className="chip chip-danger">
-            {collisions.size} collision address{collisions.size > 1 ? "es" : ""}
-          </span>
-        )}
+        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          {collisions.size > 0 && (
+            <span className="chip chip-danger">
+              {collisions.size} collision address{collisions.size > 1 ? "es" : ""}
+            </span>
+          )}
+          <button
+            className="btn btn-ghost"
+            disabled={listings.length === 0}
+            title="Download your log as JSON"
+            onClick={exportListings}
+          >
+            Export
+          </button>
+          <button
+            className="btn btn-ghost"
+            title="Import a previously exported JSON log"
+            onClick={() => fileInput.current?.click()}
+          >
+            Import
+          </button>
+          <input
+            ref={fileInput}
+            type="file"
+            accept=".json,application/json"
+            style={{ display: "none" }}
+            onChange={(e) => {
+              const file = e.target.files?.[0];
+              if (file) importListings(file);
+              e.target.value = "";
+            }}
+          />
+        </div>
       </div>
+      {importNote && (
+        <div className="muted" style={{ marginBottom: 10 }}>
+          {importNote}
+        </div>
+      )}
 
       <div className="card">
         <div className="form-row">

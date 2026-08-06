@@ -265,6 +265,12 @@ body {
   transform: translateY(1px);
 }
 
+.btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+  transform: none;
+}
+
 .btn-primary {
   background: linear-gradient(180deg, rgba(0, 128, 255, 0.9), rgba(0, 96, 224, 0.9));
   border-color: rgba(120, 190, 255, 0.35);

@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import type { Listing } from "./types";
-import { loadListings, saveListings } from "./lib/storage";
+import { loadListings, newListingId, saveListings } from "./lib/storage";
 import { collisionAddresses } from "./lib/collisions";
+import { normalizeAddress, normalizeName } from "./lib/normalize";
 import { Lookup } from "./components/Lookup";
 import { GhostScore } from "./components/GhostScore";
 import { Listings } from "./components/Listings";
@@ -48,6 +49,25 @@ export default function App() {
     setView("score");
   };
 
+  /** Log a listing from the Ghost Score screen; skips exact duplicates. */
+  const logListing = (name: string, address: string): boolean => {
+    const dup = listings.some(
+      (l) =>
+        normalizeName(l.name) === normalizeName(name) &&
+        normalizeAddress(l.address) === normalizeAddress(address),
+    );
+    if (dup) return false;
+    const entry: Listing = {
+      id: newListingId(),
+      name: name.trim(),
+      address: address.trim(),
+      platform: "Other",
+      addedAt: new Date().toISOString(),
+    };
+    setListings((prev) => [entry, ...prev]);
+    return true;
+  };
+
   return (
     <div className="shell">
       <aside className="sidebar">
@@ -81,7 +101,7 @@ export default function App() {
           <Lookup onRunScore={runScore} />
         </div>
         <div style={{ display: view === "score" ? "block" : "none" }}>
-          <GhostScore listings={listings} prefill={scorePrefill} />
+          <GhostScore listings={listings} prefill={scorePrefill} onLog={logListing} />
         </div>
         <div style={{ display: view === "listings" ? "block" : "none" }}>
           <Listings listings={listings} setListings={setListings} />

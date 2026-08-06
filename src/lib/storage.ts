@@ -2,7 +2,7 @@ import type { Listing } from "../types";
 
 const KEY = "gkt.listings.v1";
 
-function isListing(value: unknown): value is Listing {
+export function isListing(value: unknown): value is Listing {
   if (!value || typeof value !== "object") return false;
   const l = value as Record<string, unknown>;
   return (

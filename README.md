@@ -8,7 +8,7 @@ Client-side Vite + React + TypeScript SPA, no backend. Styled in the ReFx Glassy
 
 - **Brand Lookup** — fuzzy-search a bundled, fact-checked database of 52 documented virtual brands (celebrity brands, chain spin-offs, operator networks) and 14 ghost kitchen operators. Shows who really runs the brand, who cooks the food, and its current status.
 - **Ghost Score** — enter any listing's name + address, answer a short observable-signal checklist, and get a 0–100 likelihood score with a verdict band and per-signal evidence breakdown. Database matches are weighted heaviest; aesthetic cues barely nudge it.
-- **My Listings** — log listings you see in the wild (persisted in localStorage). The app flags **address collisions** — multiple brand names sharing one address, the defining ghost kitchen fingerprint — and matches against the known-brand database.
+- **My Listings** — log listings you see in the wild (persisted in localStorage). The app flags **address collisions** — multiple brand names sharing one address, the defining ghost kitchen fingerprint — and matches against the known-brand database. Export/import the log as JSON to move it between browsers. Assessed listings can be saved straight from the Ghost Score screen.
 - **Field Guide** — how to spot a ghost kitchen in under two minutes, plus the full scoring model.
 
 Keyboard: press `1`–`4` to switch screens.

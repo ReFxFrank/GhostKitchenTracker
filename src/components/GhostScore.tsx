@@ -45,10 +45,18 @@ interface Prefill {
   nonce: number;
 }
 
-export function GhostScore({ listings, prefill }: { listings: Listing[]; prefill: Prefill }) {
+interface GhostScoreProps {
+  listings: Listing[];
+  prefill: Prefill;
+  /** Returns false when the listing is already logged. */
+  onLog: (name: string, address: string) => boolean;
+}
+
+export function GhostScore({ listings, prefill, onLog }: GhostScoreProps) {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [answers, setAnswers] = useState<Record<string, boolean>>({});
+  const [logState, setLogState] = useState<"idle" | "logged" | "dup">("idle");
 
   // Each prefill event from Lookup starts a fresh assessment, even for a
   // name that was already assessed.
@@ -57,6 +65,7 @@ export function GhostScore({ listings, prefill }: { listings: Listing[]; prefill
       setName(prefill.name);
       setAddress("");
       setAnswers({});
+      setLogState("idle");
     }
   }, [prefill.nonce, prefill.name]);
 
@@ -70,6 +79,13 @@ export function GhostScore({ listings, prefill }: { listings: Listing[]; prefill
 
   const setAnswer = (id: string, value: boolean) =>
     setAnswers((prev) => ({ ...prev, [id]: value }));
+
+  const canLog = name.trim().length >= 2 && address.trim().length >= 4;
+
+  const handleLog = () => {
+    if (!canLog) return;
+    setLogState(onLog(name, address) ? "logged" : "dup");
+  };
 
   return (
     <div>
@@ -94,7 +110,10 @@ export function GhostScore({ listings, prefill }: { listings: Listing[]; prefill
                   className="input"
                   placeholder="Restaurant name on the app"
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                    setLogState("idle");
+                  }}
                 />
               </div>
               <div>
@@ -103,9 +122,25 @@ export function GhostScore({ listings, prefill }: { listings: Listing[]; prefill
                   className="input"
                   placeholder="Street address shown on the listing"
                   value={address}
-                  onChange={(e) => setAddress(e.target.value)}
+                  onChange={(e) => {
+                    setAddress(e.target.value);
+                    setLogState("idle");
+                  }}
                 />
               </div>
+              <button
+                className="btn btn-ghost"
+                style={{ flex: "0 0 auto" }}
+                disabled={!canLog || logState !== "idle"}
+                title={canLog ? "Save this listing to My Listings" : "Enter a name and address first"}
+                onClick={handleLog}
+              >
+                {logState === "logged"
+                  ? "Logged ✓"
+                  : logState === "dup"
+                    ? "Already logged"
+                    : "Log to My Listings"}
+              </button>
             </div>
           </div>
 
